@@ -1,0 +1,6 @@
+package org.jaemin.sample;
+
+@Runwith
+public class SampleTests {
+
+}
