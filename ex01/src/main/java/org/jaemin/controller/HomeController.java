@@ -36,4 +36,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/nopage", method = RequestMethod.GET)
+	public String home() {
+	
+		
+		return "custom404";
+	}
+	
 }
