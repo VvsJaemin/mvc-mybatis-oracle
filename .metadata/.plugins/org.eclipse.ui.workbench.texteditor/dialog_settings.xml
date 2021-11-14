@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="log4j"/>
+		<item key="selection" value="junit"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="junit"/>
+			<item value="tx"/>
+			<item value="log4jdbc\"/>
+			<item value="log4jdbc"/>
 			<item value="log4j"/>
 			<item value="log"/>
 			<item value="servlet"/>
 			<item value="spring-test"/>
 			<item value="runtime"/>
 			<item value="lombok"/>
-			<item value="junit"/>
 		</list>
 		<list key="replacehistory">
 		</list>
