@@ -2,8 +2,10 @@ package org.jaemin.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.jaemin.domain.BoardVO;
 import org.jaemin.mapper.BoardMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +15,8 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
+	
+	private BoardMapper Mapper;
 
 	@Override
 	public void register(BoardVO board) {

@@ -1,5 +1,0 @@
-package org.jaemin.mapper;
-
-public interface TimeMapper {
-
-}

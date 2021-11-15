@@ -1,7 +1,10 @@
 package org.jaemin.controller;
 
+import javax.annotation.Resource;
+
 import org.jaemin.domain.BoardVO;
 import org.jaemin.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,19 +22,20 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class BoardController {
 	
-	private BoardService service;
+
+	private BoardService boardService;
 	
 	@GetMapping("/list")
 	public void list(Model model) {
 		log.info("list");
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", boardService.getList());
 	}
 	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		log.info("register " + board);
 		
-		service.register(board);
+		boardService.register(board);
 		
 		rttr.addFlashAttribute("result", board.getBno());
 		
@@ -42,14 +46,14 @@ public class BoardController {
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		log.info("/get");
 		
-		model.addAttribute("board", service.get(bno));
+		model.addAttribute("board", boardService.get(bno));
 	}
 	
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
 		log.info("modify " + board);
 		
-		if(service.modify(board)) {
+		if(boardService.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -60,7 +64,7 @@ public class BoardController {
 	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
 		log.info("remove" + bno);
 		
-		if(service.remove(bno)) {
+		if(boardService.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		

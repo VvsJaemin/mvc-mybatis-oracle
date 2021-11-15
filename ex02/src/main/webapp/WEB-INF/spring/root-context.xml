@@ -14,7 +14,7 @@
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 
 		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:oracl"></property>
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:oracl"></property>
 
 		<property name="username" value="SYSTEM"></property>
 		<property name="password" value="root"></property>
@@ -30,7 +30,8 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<mybatis-spring:scan base-package="org.jaemin.*" />
+	<mybatis-spring:scan base-package="org.jaemin.mapper" />
+	
 
 	<context:component-scan
 		base-package="org.jaemin.*"></context:component-scan>
