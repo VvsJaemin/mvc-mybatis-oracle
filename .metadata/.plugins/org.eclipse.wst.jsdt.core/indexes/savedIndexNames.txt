@@ -8,4 +8,3 @@ INDEX VERSION 1.4+C:\Users\W\Desktop\eclipse-workspace\.metadata\.plugins\org.ec
 1023945950.index
 4052766297.index
 1206470954.index
-1206470954.index
