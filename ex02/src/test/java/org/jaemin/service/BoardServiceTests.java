@@ -3,6 +3,7 @@ package org.jaemin.service;
 import static org.junit.Assert.assertNotNull;
 
 import org.jaemin.domain.BoardVO;
+import org.jaemin.domain.Criteria;
 import org.jaemin.persistence.DataSourceTests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +42,8 @@ public class BoardServiceTests {
 
 	@Test
 	public void testGetList() {
-		service.getList().forEach(board -> log.info(board));
+//		service.getList().forEach(board -> log.info(board));
+		service.getList(new Criteria(2,10)).forEach(board-> log.info(board));
 	}
 
 	@Test

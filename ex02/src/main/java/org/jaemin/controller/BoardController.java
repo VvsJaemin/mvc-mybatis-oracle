@@ -3,6 +3,7 @@ package org.jaemin.controller;
 import javax.annotation.Resource;
 
 import org.jaemin.domain.BoardVO;
+import org.jaemin.domain.Criteria;
 import org.jaemin.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,10 +26,15 @@ public class BoardController {
 
 	private BoardService boardService;
 	
+	/*
+	 * @GetMapping("/list") public void list(Model model) { log.info("list");
+	 * model.addAttribute("list", boardService.getList()); }
+	 */
+	
 	@GetMapping("/list")
-	public void list(Model model) {
-		log.info("list");
-		model.addAttribute("list", boardService.getList());
+	public void list(Criteria cri, Model model) {
+		log.info("list : " + cri);
+		model.addAttribute("list", boardService.getList(cri));
 	}
 	
 	@PostMapping("/register")

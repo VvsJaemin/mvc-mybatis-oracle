@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.jaemin.domain.BoardVO;
+import org.jaemin.domain.Criteria;
 import org.jaemin.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 	
-	private BoardMapper Mapper;
+	private BoardMapper mapper;
 
 	@Override
 	public void register(BoardVO board) {
@@ -52,12 +53,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getList() {
-		log.info("getList......");
+	public List<BoardVO> getList(Criteria cri) {
 		
-		return mapper.getList();
+		log.info("get List with criteria : " + cri);
+		
+		return mapper.getListWithPaging(cri);
 	}
+	/*
+	 * @Override public List<BoardVO> getList() { log.info("getList......");
+	 * 
+	 * return mapper.getList(); }
+	 */
 
-	private BoardMapper mapper;
+	
 	
 }

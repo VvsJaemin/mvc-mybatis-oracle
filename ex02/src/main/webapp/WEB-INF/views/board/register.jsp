@@ -76,6 +76,7 @@
 						
 						<button type="submit" class="btn btn-default">Submit Button</button>
 						<button type="reset" class="btn btn-default">Reset Button</button>
+						<button type="submit" data-oper='list' class="btn btn-info">list</button>
 						
 					</form>
 				</div>
@@ -84,5 +85,20 @@
 		</div>
 	</div>
 		<%@include file="../includes/footer.jsp"%>
+		
+		<script type="text/javascript">
+			$(document).ready(function () {
+				var formObj = $('form');
+				
+				$('button').on('click', function () {
+					var operation = $(this).data("oper");
+					
+					if(operation==='list'){
+						formObj.attr("action", "/board/list").attr("method", "get");
+					}
+					formObj.submit();
+				})
+			});
+		</script>
 </body>
 </html>

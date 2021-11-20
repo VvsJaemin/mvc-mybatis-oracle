@@ -1,6 +1,9 @@
 package org.jaemin.mapper;
 
+import java.util.List;
+
 import org.jaemin.domain.BoardVO;
+import org.jaemin.domain.Criteria;
 import org.jaemin.persistence.DataSourceTests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,6 +65,18 @@ public class BoardMapperTests {
 		
 		int count = mapper.update(board);
 		log.info("update count : " + count);
+	}
+	
+	@Test
+	public void testPaging() {
+		
+		Criteria cri = new Criteria();
+		cri.setPageNum(3);
+		cri.setAmount(10);
+		
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		
+		list.forEach(board-> log.info(board.getBno()));
 	}
 
 }

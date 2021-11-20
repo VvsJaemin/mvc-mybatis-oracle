@@ -104,9 +104,10 @@
 									<h4 class="modal-title" id="myModalLabel">Modal Title</h4>
 								</div>
 								<div class="modal-body">처리가 완료되었습니다</div>
-								<div class="modal-footer">
+								<div class
+								="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary" >Save Change</button>
+								<!-- 	<button type="button" class="btn btn-primary" >Save Change</button> -->
 								</div>
 							</div>
 						</div>
