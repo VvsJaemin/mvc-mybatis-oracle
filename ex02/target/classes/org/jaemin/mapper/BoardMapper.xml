@@ -4,6 +4,27 @@
 
 <mapper namespace="org.jaemin.mapper.BoardMapper">
 
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+
+		<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
 	<select id="getList" resultType="org.jaemin.domain.BoardVO">
 	
 		<![CDATA[
@@ -42,13 +63,15 @@
 	<update id="update">
 		UPDATE tbl_board SET
 		title = #{title},
-		content = #{content},
+		content =
+		#{content},
 		writer = #{writer},
 		updateDate = sysdate
 		WHERE bno = #{bno}
 	</update>
-	
-	<select id ="getListWithPaging" resultType="org.jaemin.domain.BoardVO">
+
+	<select id="getListWithPaging"
+		resultType="org.jaemin.domain.BoardVO">
 		<![CDATA[
 			SELECT 
 				bno, title, content, writer, regDate, updateDate
@@ -58,10 +81,23 @@
 					rownum rn, 	bno, title, content, writer, regDate, updateDate
 				FROM
 					tbl_board
-				WHERE rownum <= #{pageNum} * #{amount}
+				WHERE 
+		]]>
+		
+		<include refid="criteria"></include>
+
+		<![CDATA[	
+				rownum <= #{pageNum} * #{amount}
 				)
 			WHERE rn > (#{pageNum} -1) * #{amount}
 		]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
+		tbl_board where
+		<include refid="criteria"></include>
+		bno > 0
 	</select>
 
 </mapper>
