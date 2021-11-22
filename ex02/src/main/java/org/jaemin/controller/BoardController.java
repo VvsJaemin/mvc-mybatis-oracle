@@ -89,6 +89,7 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
+		
 	
 		return "redirect:/board/list" + cri.getListLink();
 	}
