@@ -13,17 +13,26 @@
 	
 	<select id="read" resultType="org.jaemin.domain.ReplyVO">
 	
-		select * from tbl_reply where rno = #{rno}
+		SELECT * FROM tbl_reply WHERE rno = #{rno}
 	
 	</select>
 	
 	<delete id="delete">
 	
-		delete from tbl_reply where rno = #{rno}
+		DELETE FROM tbl_reply WHERE rno = #{rno}
 		
 	</delete>
 	
 	<update id="update">
-		update tbl_reply set reply =#{reply}, updatedate = sysdate where rno =#{rno}
+		UPDATE tbl_reply SET reply =#{reply}, updateDate = sysdate
+			 WHERE rno =#{rno}
 	</update>
+	
+	<select id="getListWithPaging" resultType="org.jaemin.domain.ReplyVO">
+		SELECT rno, bno, reply, replyer, replyDate, updateDate 
+			FROM tbl_reply
+			WHERE bno = #{bno}
+			ORDER BY rno ASC
+	</select>
+	
 </mapper>

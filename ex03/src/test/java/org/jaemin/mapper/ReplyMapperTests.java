@@ -1,7 +1,10 @@
 package org.jaemin.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
+import org.jaemin.domain.Criteria;
 import org.jaemin.domain.ReplyVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,22 +53,25 @@ public class ReplyMapperTests {
 		log.info(vo);
 	}
 	
-	@Test
-	public void testDelete() {
-		Long targerRno = 1L;
-		
-		mapper.delete(targerRno);
-	}
+	/*
+	 * @Test public void testDelete() { Long targerRno = 1L;
+	 * 
+	 * mapper.delete(targerRno); }
+	 * 
+	 * @Test public void testUpdate() { Long targetRno = 10L;
+	 * 
+	 * ReplyVO vo = mapper.read(targetRno);
+	 * 
+	 * vo.setReply("Update Reply");
+	 * 
+	 * int count = mapper.update(vo); log.info("Update Count : " + count); }
+	 */
 	
-	@Test 
-	public void testUpdate() {
-		Long targetRno = 10L;
+	@Test
+	public void testList() {
+		Criteria cri = new Criteria();
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
 		
-		ReplyVO vo = mapper.read(targetRno);
-		
-		vo.setReply("Update Reply");
-		
-		int count  = mapper.update(vo);
-		log.info(count);
+		replies.forEach(re-> log.info(re));
 	}
 }
