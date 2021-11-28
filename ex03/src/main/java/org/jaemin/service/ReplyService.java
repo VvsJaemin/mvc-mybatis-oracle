@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.jaemin.domain.Criteria;
+import org.jaemin.domain.ReplyPageDTO;
 import org.jaemin.domain.ReplyVO;
 
 public interface ReplyService {
@@ -17,5 +18,7 @@ public interface ReplyService {
 	public int update(ReplyVO reply);
 	
 	public List<ReplyVO> getList(Criteria cri, Long bno);
+	
+	public ReplyPageDTO getListPage(Criteria cri, Long bno);
 
 }

@@ -3,6 +3,7 @@ package org.jaemin.service;
 import java.util.List;
 
 import org.jaemin.domain.Criteria;
+import org.jaemin.domain.ReplyPageDTO;
 import org.jaemin.domain.ReplyVO;
 import org.jaemin.mapper.ReplyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,12 @@ public class ReplyServiceImpl implements ReplyService {
 		
 		return mapper.getListWithPaging(cri, bno);
 		
+	}
+
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+		
+		return new ReplyPageDTO(mapper.getCountByBno(bno), mapper.getListWithPaging(cri, bno));
 	}
 
 }
