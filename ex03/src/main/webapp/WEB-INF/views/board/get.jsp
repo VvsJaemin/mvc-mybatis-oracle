@@ -333,7 +333,7 @@
 				var targetPageNum = $(this).attr("href");
 				
 				pageNum = targetPageNum;
-				showList(pageNum);
+				showList(pageNum); 
 			});
 		
 		});
