@@ -6,6 +6,7 @@ import org.jaemin.domain.Criteria;
 import org.jaemin.domain.ReplyPageDTO;
 import org.jaemin.domain.ReplyVO;
 import org.jaemin.service.ReplyService;
+import org.jaemin.service.ReplyServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import oracle.jdbc.proxy.annotation.Post;
-
-@RequestMapping("/replies")
-@RestController
 @Log4j
 @AllArgsConstructor
+@RequestMapping("/replies")
+@RestController
 public class ReplyController {
 
-	private ReplyService service;
+	private ReplyServiceImpl service;
 
 	@PostMapping(value = "/new", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> create(@RequestBody ReplyVO vo) {

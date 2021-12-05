@@ -1,5 +1,0 @@
-127.0.0.1 - - [07/Nov/2021:21:32:36 +0900] "GET / HTTP/1.1" 404 807
-0:0:0:0:0:0:0:1 - - [07/Nov/2021:21:32:36 +0900] "GET /controller/WEB-INF/spring/root-context.xml HTTP/1.1" 404 721
-127.0.0.1 - - [07/Nov/2021:21:33:59 +0900] "GET / HTTP/1.1" 200 164
-127.0.0.1 - - [07/Nov/2021:22:10:24 +0900] "GET / HTTP/1.1" 200 165
-0:0:0:0:0:0:0:1 - - [07/Nov/2021:22:10:25 +0900] "GET /WEB-INF/classes/org/jaemin/controller/HomeController.java HTTP/1.1" 404 721

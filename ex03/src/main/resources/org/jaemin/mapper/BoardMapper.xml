@@ -74,11 +74,11 @@
 		resultType="org.jaemin.domain.BoardVO">
 		<![CDATA[
 			SELECT 
-				bno, title, content, writer, regDate, updateDate
+				bno, title, content, writer, regDate, updateDate, replyCnt
 			FROM
 				(
 				SELECT /*+INDEX_DESC(tbl_board pk_board) */
-					rownum rn, 	bno, title, content, writer, regDate, updateDate
+					rownum rn, 	bno, title, content, writer, regDate, updateDate, replyCnt
 				FROM
 					tbl_board
 				WHERE 
@@ -99,5 +99,9 @@
 		<include refid="criteria"></include>
 		bno > 0
 	</select>
+	
+	<update id="updateReplyCnt">
+		UPDATE tbl_board SET replyCnt = replyCnt + #{amount} where bno = #{bno}
+	</update>
 
 </mapper>
